@@ -1,36 +1,71 @@
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
+/* html { 
+  background: url(images/mink-mingle-NORa8-4ohA0-unsplash.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+} */
 
 body {
-  font-family: 'Karla', sans-serif;
+    font-family: 'Muli', sans-serif;
+    background: src="images/";
 }
 
-h1 {
-    font-weight: 700;
-}
-
-button, input[type="text"] {
-  padding: 5px;
-}
-
-input {
-    margin-top: 10px;
-}
-
-button:hover {
-  cursor: pointer;
-}
-
-.container {
-  max-width: 700px;
-  margin: 0 auto;
-}
-
-.error-message {
-    color: red;
+h1{ 
+    font-family: 'Courgette', cursive;
+    /* font-family: 'Gochi Hand', cursive; */
 }
 
 .hidden {
-  display: none;
+    display: none;
+}
+
+.fa-paw {
+    color: white;
+    margin-top: 12px;
+    margin-left: 20px;
+}
+
+header {
+    background-color: rgb(46, 45, 45);
+    height: 7%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.container {
+    margin: 60px auto;
+    text-align: center;
+    width: 80%;
+}
+
+input {
+    width: 30px;
+    border-radius: 3px;
+    border: 1px solid rgb(191, 187, 187);
+}
+
+footer {
+    background-color: rgb(46, 45, 45);
+    height: 7%;
+    width: 100%;
+    color: white;
+    text-align: right;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+button {
+    height: 100px;
+    width: 150px;
+    border-radius: 25% 10%;
+    border: 1px solid rgb(191, 187, 187);
 }
