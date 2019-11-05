@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Daily cute</title>
+    <link href="https://fonts.googleapis.com/css?family=Courgette&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Gochi+Hand|Muli:400,700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/39049d07a4.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="index.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <i class="fas fa-paw"></i>
+    </header>
+    <section class="container">
+        <h1>Your daily dose of cuteness</h1>
+        <!-- <p>Choose how many cute pictures you'd like to see</p>
+        <p>Click on either cat or dog to get random images and fun facts about them</p> -->
+        <form>
+            <p>
+                Gimme <input id="number" type="number" value="5"> adorable pictures and interesting facts
+            </p>
+            <button type="submit" name="action" value="cat">CATs <i class="fas fa-cat"></i></button>
+            <p>or</p>
+            <button type="submit" name="action" value="dog">DOGs <i class="fas fa-dog"></i></button>
+        </form>
+        <div class="result hidden">
+            <h2>Here you are!!</h2>
+            
+        </div>
+    </section>
+   
+
+    <footer>
+        <p>Photo by Mink Mingle on Unsplash</p>
+    </footer>
+
+    <script src="index.js"></script>
+</body>
+</html>
