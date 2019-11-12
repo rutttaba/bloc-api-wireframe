@@ -1,112 +1,78 @@
-const dogUrl = 'https://dog.ceo/api/breeds/image/random';
-const catUrl = 'https://aws.random.cat/meow';
-const catFactsUrl = 'http://catfact.ninja/fact';
-const dogFactsUrl = 'http://dog-api.kinduff.com/api/facts';
 
 
-function fetchCat() {
-    return fetch(catUrl).then(r => r.json());
+const store = {
+    dog: {
+        pics: {
+            url: 'https://dog.ceo/api/breeds/image/random',
+            adapter: (json) => json.message 
+        },
+        facts: {
+            url: 'https://cors-anywhere.herokuapp.com/https://dog-api.kinduff.com/api/facts',
+            adapter: (json) => json.facts[0]
+        }
+    },
+    cat: {
+        pics: {
+            url: 'https://aws.random.cat/meow',
+            adapter: (json) => json.file
+        },
+        facts: {
+            url: 'https://catfact.ninja/fact',
+            adapter: (json) => json.fact
+        }
+    }
 }
 
-function fetchCatFact() {
-    return fetch(catFactsUrl).then(r => r.json());
+function fetchJson(url) {
+    return fetch(url).then(r => r.json());
 }
 
 
-function fetchCatPics(n) {
-    Promise.all(new Array(n).fill(null).map(fetchCat))
-    .then(
+function fetchInfo(type, infoType, n) {
+    return Promise.all(new Array(n).fill(null).map(() => fetchJson(store[type][infoType].url))).then(
         results => {
+            const data = [];
+            const f = store[type][infoType].adapter;
+            console.log(type, infoType, f);
             for (const r of results) {
-                const catPics = new Array().push(`${r.file}`);
+                data.push(f(r));
             }
+            return Promise.resolve(data);
         }
     );
-    return catPics;
 }
 
-function fetchCatFacts(n) {
-    Promise.all(new Array(n).fill(null).map(fetchCatFact))
-        .then(
-            results => {
-                for (const r of results) {
-                    const catFacts = new Array().push(`${r.fact}`);
-                }
-            }
+function buttonAction(type) {
+    return (e) => {
+        e.preventDefault();
+        const n = Number($('#number').val());
+        Promise.all([fetchInfo(type, 'facts', n), fetchInfo(type, 'pics', n)]).then(
+            displayResults
+        ).catch(
+            console.log
         );
-    return catFacts;
+    }
 }
 
-function displayCatResults(n) {
-    $('#results').empty();
+
+
+function displayResults([facts, pics]) {
+    console.log(facts, pics);
+    $('#results-list').empty();
     $('#js-error-message').empty();
-    for (let i = 0; i < n; i++) {
-        $('#results').append(
-            `<div><img src="${catPics[i]}" alt="photo of a cat">
-             <p class="js-fact">${catFacts[i]}</p></div>
+    for (let i = 0; i < facts.length; i++) {
+        $('#results-list').append(
+            `<div><img src="${pics[i]}" alt="photo of a cute animal">
+             <p class="js-fact">${facts[i]}</p></div>
             `
         )
     };
-    $('#results').removeClass('hidden');
-}
-
-
-
-
-function fetchDog() {
-    return fetch(dogUrl).then(r => r.json());
-}
-function fetchDogFact() {
-    return fetch(dogFactsUrl).then(r => r.json());
-}
-
-function fetchDogPics(n) {
-    Promise.all(new Array(n).fill(null).map(fetchDog)).then(
-        results => {
-            for (const r of results) {
-                const dogPics = new Array().push(`${r.message}`);
-            }
-        }
-    );
-    return dogPics;
-}
-
-function fetchDogFacts(n) {
-    Promise.all(new Array(n).fill(null).map(fetchDogFact)).then(
-        results => {
-            for (const r of results) {
-                const dogFacts = new Array().push(`${r.facts}`);
-            }
-        }
-    );
-    return dogFacts;
-}
-
-function displayDogResults(n) {
-    $('#results').empty();
-    $('#js-error-message').empty();
-    for (let i = 0; i < n; i++) {
-        $('#results').append(
-            `<div><img src="${dogPics[i]}" alt="photo of a cat">
-             <p class="js-fact">${dogFacts[i]}</p></div>
-            `
-        )
-    };
-    $('#results').removeClass('hidden');
+    $('.result').removeClass('hidden');
 }
 
 function watchForm() {
-    
-
-    $('form').submit(event => {
-        event.preventDefault();
-        const num = $('#number').val();
-        if (button[value] === "cat") {
-            displayCatResults(num)
-        } else if (button[value] === "dog"){
-            displayDogResults(num)
-        }
-    });
+    $('#dog').click(buttonAction('dog'));
+    $('#cat').click(buttonAction('cat'));
 }
 
 $(watchForm);
