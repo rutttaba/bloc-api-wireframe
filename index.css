@@ -93,7 +93,7 @@ img {
    }
 
    .fa-paw, .newSearch {
-       padding: 10px;
+       padding: 5px;
        font-size: 1.2em;
        line-height: 1.5em;
    }
@@ -122,8 +122,7 @@ img {
 @media screen and (min-width: 900px) {
     .fa-paw {
         font-size: 1em;
-        padding-top: 5px;
-        padding-bottom: 20px;
+        padding: 0;
     }
 
     .newSearch {
