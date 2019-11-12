@@ -7,7 +7,7 @@ const store = {
             adapter: (json) => json.message 
         },
         facts: {
-            url: 'https://cors-anywhere.herokuapp.com/https://dog-api.kinduff.com/api/facts',
+            url: 'https://dog-api.kinduff.com/api/facts',
             adapter: (json) => json.facts[0]
         }
     },
