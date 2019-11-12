@@ -11,12 +11,12 @@
 
 body {
     font-family: 'Muli', sans-serif;
-    background: src="images/";
+   
 }
 
 h1{ 
-    font-family: 'Courgette', cursive;
-    /* font-family: 'Gochi Hand', cursive; */
+    /* font-family: 'Courgette', cursive; */
+    font-family: 'Gochi Hand', cursive;
 }
 
 .hidden {
@@ -55,12 +55,18 @@ footer {
     background-color: rgb(46, 45, 45);
     height: 7%;
     width: 100%;
-    color: white;
     text-align: right;
     position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
+    padding: 10px;
+}
+
+.newSearch {
+    color: white;
+    text-decoration: none;
+    font-size: 0.8em;
 }
 
 button {
@@ -68,4 +74,18 @@ button {
     width: 150px;
     border-radius: 25% 10%;
     border: 1px solid rgb(191, 187, 187);
+}
+
+img {
+    width: 100%;
+}
+
+.js-fact {
+    font-size: 0.8em;
+    text-align: left;
+    padding-bottom: 10px;
+}
+
+#results-list {
+    padding: 30px;
 }

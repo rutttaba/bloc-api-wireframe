@@ -67,12 +67,22 @@ function displayResults([facts, pics]) {
             `
         )
     };
+    $('form').addClass('hidden');
     $('.result').removeClass('hidden');
+    $('.newSearch').removeClass('hidden');
+}
+
+function startAgain() {
+    $('form').removeClass('hidden');
+    $('.result').addClass('hidden');
+    $('.newSearch').addClass('hidden');
 }
 
 function watchForm() {
     $('#dog').click(buttonAction('dog'));
     $('#cat').click(buttonAction('cat'));
+    $('.newSearch').click(startAgain);
+    $('.fa-paw').click(startAgain);
 }
 
 $(watchForm);
