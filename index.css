@@ -1,13 +1,6 @@
 * {
     box-sizing: border-box;
 }
-/* html { 
-  background: url(images/mink-mingle-NORa8-4ohA0-unsplash.jpg) no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-} */
 
 body {
     font-family: 'Muli', sans-serif;
@@ -17,6 +10,7 @@ body {
 h1{ 
     /* font-family: 'Courgette', cursive; */
     font-family: 'Gochi Hand', cursive;
+    padding: 20px;
 }
 
 .hidden {
@@ -25,18 +19,19 @@ h1{
 
 .fa-paw {
     color: white;
-    margin-top: 12px;
-    margin-left: 20px;
+    margin-left: 15px;
 }
 
+
 header {
-    background-color: rgb(46, 45, 45);
-    height: 7%;
+    background-color: rgb(55, 54, 54);
+    height: 5%;
     width: 100%;
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
+    padding: 5px;
 }
 
 .container {
@@ -52,22 +47,23 @@ input {
 }
 
 footer {
-    background-color: rgb(46, 45, 45);
-    height: 7%;
+    background-color: rgb(55, 54, 54);
+    height: 5%;
     width: 100%;
     text-align: right;
     position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
-    padding: 10px;
+    padding: 5px;
 }
 
 .newSearch {
     color: white;
     text-decoration: none;
-    font-size: 0.8em;
+    font-size: 0.7em;
 }
+
 
 button {
     height: 100px;
@@ -88,4 +84,60 @@ img {
 
 #results-list {
     padding: 30px;
+}
+
+@media screen and (min-width: 700px) {
+   h1 {
+       padding: 50px;
+       font-size: 2.5rem;
+   }
+
+   .fa-paw, .newSearch {
+       padding: 10px;
+       font-size: 1.2em;
+       line-height: 1.5em;
+   }
+
+   .infoText {
+       margin: 40px;
+       font-size: 1.5em;
+   }
+
+   button {
+       width: 210px;
+       height: 140px;
+       font-size: 1em;
+   }
+
+   input {
+       width: 60px;
+       font-size: 1em;
+   }
+
+   .js-fact {
+       font-size: 1.2em;
+   }
+}
+
+@media screen and (min-width: 900px) {
+    .fa-paw {
+        font-size: 1em;
+        padding-top: 5px;
+        padding-bottom: 20px;
+    }
+
+    .newSearch {
+        font-size: 1em;;
+    }
+
+    .result {
+        margin: 20px auto;
+    }
+
+    #results-list {
+        display: grid;
+        grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+        gap: 10px;
+    }
+
 }

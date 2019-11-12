@@ -62,7 +62,7 @@ function displayResults([facts, pics]) {
     $('#js-error-message').empty();
     for (let i = 0; i < facts.length; i++) {
         $('#results-list').append(
-            `<div><img src="${pics[i]}" alt="photo of a cute animal">
+            `<div class="result-container"><img src="${pics[i]}" alt="photo of a cute animal">
              <p class="js-fact">${facts[i]}</p></div>
             `
         )
