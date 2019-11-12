@@ -7,7 +7,7 @@ const store = {
             adapter: (json) => json.message 
         },
         facts: {
-            url: 'https://dog-api.kinduff.com/api/facts',
+            url: 'https://cors-anywhere.herokuapp.com/https://dog-api.kinduff.com/api/facts',
             adapter: (json) => json.facts[0]
         }
     },
@@ -27,6 +27,18 @@ function fetchJson(url) {
     return fetch(url).then(r => r.json());
 }
 
+// function fetchJson(url) {
+//      fetch(url).then(r => {
+//         if(r.ok) {
+//            return r.json();
+//         }
+//         throw new Error(r.statusText);
+//     })
+//     .catch(err => {
+//         console.log(err.message)
+//         $('#js-error-message').text(`Something went wrong: ${err.message}`).removeClass('hidden'); 
+//     });     
+// }
 
 function fetchInfo(type, infoType, n) {
     return Promise.all(new Array(n).fill(null).map(() => fetchJson(store[type][infoType].url))).then(
