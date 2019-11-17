@@ -15,29 +15,32 @@
 </head>
 <body>
     <header>
-        <i class="fas fa-paw"></i>
+        <i class="fas fa-paw icon-4x links"></i>
     </header>
     <section class="container">
         <h1>Your daily dose of cuteness</h1>
+        <p class="lg-intro">You love cats? You adore dogs? 
+             Not to worry, we've got you covered. Choose up to 50 random photos and fun facts of your favourite animal! </p>
          <form>
             <p class="infoText">
-                Gimme <input id="number" type="number" value="5" min="1" max="20" required> adorable pictures and interesting facts of
+                Gimme <input id="number" type="number" value="6" min="1" max="50" required> adorable pictures <span class="emf">and</span> interesting facts of
             </p>
-            <button type="submit" id="cat">CATs <i class="fas fa-cat"></i></button>
+            <button type="submit" class="choice links" id="cat"> <i class="fas fa-cat"></i></button>
             <p>or</p>
-            <button type="submit" id="dog">DOGs <i class="fas fa-dog"></i></button>
+            <button type="submit" class="choice links" id="dog"> <i class="fas fa-dog"></i></button>
         </form>
         <div class="result hidden">
             <h2>Here you are!!</h2>
             <div id="results-list"></div>
-            <div id="js-error-message"></div>
         </div>
+        <div id="js-error-message"></div>
+        <button class="reset hidden links">Try again</button>
     </section>
   
    
 
     <footer>
-        <a class="newSearch hidden" href="#home">Let me have some more</a>
+        <a class="newSearch hidden links" href="#home">&lt;&lt;New Search</a>
     </footer>
 
     <script src="index.js"></script>

@@ -23,22 +23,20 @@ const store = {
     }
 }
 
-function fetchJson(url) {
-    return fetch(url).then(r => r.json());
-}
 
-// function fetchJson(url) {
-//      fetch(url).then(r => {
-//         if(r.ok) {
-//            return r.json();
-//         }
-//         throw new Error(r.statusText);
-//     })
-//     .catch(err => {
-//         console.log(err.message)
-//         $('#js-error-message').text(`Something went wrong: ${err.message}`).removeClass('hidden'); 
-//     });     
-// }
+function fetchJson(url) {
+     return fetch(url).then(r => {
+        if(r.ok) {
+           return r.json();
+        }
+        throw new Error(r.statusText);
+    })
+    .catch(err => {
+        console.log(err.message)
+        $('#js-error-message').text(`Something went wrong: ${err.message}`); 
+        $('.reset').removeClass('hidden');
+    });     
+}
 
 function fetchInfo(type, infoType, n) {
     return Promise.all(new Array(n).fill(null).map(() => fetchJson(store[type][infoType].url))).then(
@@ -57,7 +55,11 @@ function fetchInfo(type, infoType, n) {
 function buttonAction(type) {
     return (e) => {
         e.preventDefault();
-        const n = Number($('#number').val());
+        let n = Number($('#number').val());
+        if (n > 50) {
+            n = 50
+            alert("Sorry, I can only show you 50 results at a time. Enjoy!");
+        } 
         Promise.all([fetchInfo(type, 'facts', n), fetchInfo(type, 'pics', n)]).then(
             displayResults
         ).catch(
@@ -74,20 +76,33 @@ function displayResults([facts, pics]) {
     $('#js-error-message').empty();
     for (let i = 0; i < facts.length; i++) {
         $('#results-list').append(
-            `<div class="result-container"><img src="${pics[i]}" alt="photo of a cute animal">
-             <p class="js-fact">${facts[i]}</p></div>
+            `<div class="result-container">
+            <div class="speech-bubble-ds">
+            <p class="js-fact">${facts[i]}</p>
+            <div class="speech-bubble-ds-arrow"></div>
+            </div>
+            <img src="${pics[i]}" alt="photo of a cute animal">
+             </div>
             `
         )
     };
     $('form').addClass('hidden');
     $('.result').removeClass('hidden');
     $('.newSearch').removeClass('hidden');
+    $('.lg-intro').addClass('gone');
 }
+
+
+
 
 function startAgain() {
     $('form').removeClass('hidden');
     $('.result').addClass('hidden');
     $('.newSearch').addClass('hidden');
+    $('#js-error-message').empty();
+    $('.reset').addClass("hidden");
+    $('.lg-intro').removeClass('gone');
+    $('#number').val('6');
 }
 
 function watchForm() {
@@ -95,6 +110,7 @@ function watchForm() {
     $('#cat').click(buttonAction('cat'));
     $('.newSearch').click(startAgain);
     $('.fa-paw').click(startAgain);
+    $('.reset').click(startAgain);
 }
 
 $(watchForm);
