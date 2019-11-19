@@ -156,7 +156,7 @@ img {
 }
 
 #js-error-message {
-    color: red;
+    color: rgb(211, 18, 18);
     font-size: 1.5em;
     padding: 15px;
 }
@@ -262,11 +262,4 @@ button {
 	    page-break-inside: avoid;
 	    margin-bottom: 1rem; 
     }
-
-
-
-
-
-
-    
-
+}
