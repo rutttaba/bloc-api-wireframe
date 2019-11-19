@@ -247,8 +247,10 @@ button {
     }
 
     #results-list {
-	    columns: 250px;
-	    column-gap: 20px; 
+        columns: 300px;
+        -moz-columns: 300px;
+        column-gap: 20px; 
+        -moz-column-gap: 20px; 
     }
 
     .result-container {
@@ -257,6 +259,7 @@ button {
         border-radius: 5px;
         background:rgb(139, 127, 134);
 	    break-inside: avoid-column;
+	    page-break-inside: avoid;
 	    margin-bottom: 1rem; 
     }
 

@@ -1,5 +1,4 @@
-
-
+// API urls and adapters to get relevant information
 const store = {
     dog: {
         pics: {
@@ -38,6 +37,7 @@ function fetchJson(url) {
     });     
 }
 
+// returns an array of facts/images of chosen animals. Array length is the number specified by the user
 function fetchInfo(type, infoType, n) {
     return Promise.all(new Array(n).fill(null).map(() => fetchJson(store[type][infoType].url))).then(
         results => {
@@ -52,18 +52,17 @@ function fetchInfo(type, infoType, n) {
     );
 }
 
+// gets the number of results wanted, calls fetch and display functions to show the results
 function buttonAction(type) {
     return (e) => {
         e.preventDefault();
         let n = Number($('#number').val());
         if (n > 50) {
             n = 50
-            alert("Sorry, I can only show you 50 results at a time. Enjoy!");
+            alert('Sorry, I can only show you 50 results at a time. Enjoy!');
         } 
         Promise.all([fetchInfo(type, 'facts', n), fetchInfo(type, 'pics', n)]).then(
             displayResults
-        ).catch(
-            console.log
         );
     }
 }
@@ -76,12 +75,12 @@ function displayResults([facts, pics]) {
     $('#js-error-message').empty();
     for (let i = 0; i < facts.length; i++) {
         $('#results-list').append(
-            `<div class="result-container">
-            <div class="speech-bubble-ds">
-            <p class="js-fact">${facts[i]}</p>
-            <div class="speech-bubble-ds-arrow"></div>
+            `<div class='result-container'>
+            <div class='speech-bubble-ds'>
+            <p class='js-fact'>${facts[i]}</p>
+            <div class='speech-bubble-ds-arrow'></div>
             </div>
-            <img src="${pics[i]}" alt="photo of a cute animal">
+            <img src='${pics[i]}' alt='photo of a cute animal'>
              </div>
             `
         )
@@ -90,6 +89,7 @@ function displayResults([facts, pics]) {
     $('.result').removeClass('hidden');
     $('.newSearch').removeClass('hidden');
     $('.lg-intro').addClass('gone');
+    $('.reset').addClass('hidden');
 }
 
 
