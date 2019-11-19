@@ -21,19 +21,19 @@ Screenshots
 
 Landing page on mobile:
 
-![mobile landing page](screenshots-daily-cute/mobile-landing.png)
+![mobile landing page](/screenshots_daily_cute/mobile-landing.png)
 
 Landing page on iPad/Desktop:
 
-![iPad landing page](screenshots-daily-cute/iPad-landing.png)
+![iPad landing page](/screenshots_daily_cute/iPad-landing.png)
 
 Results page on mobile/iPad:
 
-![iPad results page](screenshots-daily-cute/iPad-results.png)
+![iPad results page](/screenshots_daily_cute/iPad-results.png)
 
 Results page on Desktop:
 
-![desktop results page](screenshots-daily-cute/desktop-results.png)
+![desktop results page](/screenshots_daily_cute/desktop-results.png)
 
 
 Built with
@@ -42,7 +42,5 @@ HTML
 CSS
 JavaScript
 jQuery
-
-
 
 
