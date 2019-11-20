@@ -172,7 +172,17 @@ img {
 
 .links {
     cursor: pointer;
-    
+    text-rendering: optimizeLegibility;
+}
+
+.wrong-input {
+    background-color: rgb(224, 171, 129);
+    border: 2px dotted rgb(234, 72, 72);
+    font-size: 1.2em;
+    width: fit-content;
+    border-radius: 5px;
+    margin: 10px auto;
+    padding: 10px;
 }
 
 button {
@@ -183,6 +193,24 @@ button {
 .links:hover {
     font-weight: 700;
     font-size: 1.2em;
+}
+
+.overlay {
+    display: none;
+    background-color: rgba(113, 107, 107, 0.4);
+    position: absolute;
+    top: 0;
+    left: 0; 
+    width: 100%;
+    height: 100%;
+    font-size: 4em; 
+}
+
+.fa-spinner {
+    color: rgb(20, 107, 104);  
+    position: fixed;
+    top: 50%;
+    left: 50%;
 }
 
 

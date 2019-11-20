@@ -17,12 +17,16 @@
     <header>
         <i class="fas fa-paw icon-3x links"></i>
     </header>
+    <section class="overlay hidden">
+        <i class="fas fa-spinner"></i>
+    </section>
     <section class="container">
         <h1>Daily dose of cuteness and fun facts </h1>
         <p class="lg-intro">You love cats? You adore dogs? 
              Not to worry, we've got you covered. Choose up to 50 random photos and fun facts of your favourite animal! </p>
        
         <form>
+            <p class="wrong-input hidden">Please choose a number between 1 and 50</p>
             <p class="infoText">
                 Gimme <input id="number" type="number" value="6" min="1" max="50" required> adorable pictures <span class="emf">and</span> interesting facts of
             </p>

@@ -29,12 +29,7 @@ function fetchJson(url) {
            return r.json();
         }
         throw new Error(r.statusText);
-    })
-    .catch(err => {
-        console.log(err.message)
-        $('#js-error-message').text(`Something went wrong: ${err.message}`); 
-        $('.reset').removeClass('hidden');
-    });     
+    })    
 }
 
 // returns an array of facts/images of chosen animals. Array length is the number specified by the user
@@ -57,14 +52,23 @@ function buttonAction(type) {
     return (e) => {
         e.preventDefault();
         let n = Number($('#number').val());
-        if (n > 50) {
-            n = 50
-            alert('Sorry, I can only show you 50 results at a time. Enjoy!');
+        if ((n< 1) || (n > 50)) {
+            $('.wrong-input').removeClass('hidden');
         } 
+        $('.overlay').show();
         Promise.all([fetchInfo(type, 'facts', n), fetchInfo(type, 'pics', n)]).then(
             displayResults
-        );
+        )
+        .catch(err => {
+            console.log(err.message)
+            $('#js-error-message').text(`Something went wrong: ${err.message}`);
+            $('.reset').removeClass('hidden');
+        })
+        .finally(
+            () => $('.overlay').hide()
+        ); 
     }
+    
 }
 
 
@@ -90,6 +94,7 @@ function displayResults([facts, pics]) {
     $('.newSearch').removeClass('hidden');
     $('.lg-intro').addClass('gone');
     $('.reset').addClass('hidden');
+    $('.wrong-input').addClass('hidden');
 }
 
 
@@ -100,9 +105,10 @@ function startAgain() {
     $('.result').addClass('hidden');
     $('.newSearch').addClass('hidden');
     $('#js-error-message').empty();
-    $('.reset').addClass("hidden");
+    $('.reset').addClass('hidden');
     $('.lg-intro').removeClass('gone');
     $('#number').val('6');
+    $('.wrong-input').addClass('hidden');
 }
 
 function watchForm() {
